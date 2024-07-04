@@ -7,10 +7,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import ms-clientes.model.Cliente;
 
 @RestController
-@RequestMapping("/api/user/cliente")
+@RequestMapping("/api/user/vendedor")
 
 
 public class UserVendedorController {
@@ -19,8 +18,9 @@ public class UserVendedorController {
 
 
     @PostMapping
-    void darAltaCliente(@RequestBody Cliente cliente) {
-        vendedorService.save(cliente);
+    void darAltaCliente() {
+        
     }
 
 }
+
