@@ -23,15 +23,21 @@ public class Obra {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     
+    @Column(name = "DIRECCION")
     private String direccion;
 
     @Column(name = "ES_REMODELACION")
     private Boolean esRemodelacion;
     
+    @Column(name = "LATITUD")
     private float lat;
     
+    @Column(name = "LONGITUD")   
     private float lng;
     
+    @Column(name = "ESTADO")
+    private Estado estado;
+
     @ManyToOne
     @JoinColumn(name = "ID_CLIENTE")
     private Cliente cliente;
@@ -39,5 +45,6 @@ public class Obra {
     @NotNull(message = "El presupuesto es obligatorio")
     @Min(value=100, message = "El presupuesto debe ser al menos de 100")
     private BigDecimal presupuesto;
+
 
 }
