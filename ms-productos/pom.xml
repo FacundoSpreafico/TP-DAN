@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.2.6</version>
+		<version>3.3.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>isi.dan</groupId>
@@ -115,11 +115,12 @@
 			<groupId>io.micrometer</groupId>
 			<artifactId>micrometer-tracing-bridge-otel</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>io.opentelemetry</groupId>
-			<artifactId>opentelemetry-exporter-zipkin</artifactId>
-			<version>1.12.0</version>
-		</dependency>
+		<!--<dependency>
+        <groupId>io.opentelemetry</groupId>
+        <artifactId>opentelemetry-exporter-zipkin</artifactId>
+        <version>1.22.0</version>
+        </dependency>
+		-->
 		<!-- https://mvnrepository.com/artifact/de.siegmar/logback-gelf -->
 		<dependency>
 			<groupId>de.siegmar</groupId>

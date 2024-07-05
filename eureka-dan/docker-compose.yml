@@ -1,0 +1,15 @@
+services:
+  eureka-server:
+    image: eureka-server:latest
+    container_name: eureka-server
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8761:8761"
+    networks:
+      - backend-net
+
+networks:
+  backend-net:
+    external: true
