@@ -15,6 +15,7 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 import java.util.Set;
+import org.springframework.beans.factory.annotation.Value;
 
 @Entity
 @Table(name = "MS_CLI_CLIENTE")
@@ -37,6 +38,7 @@ public class Cliente {
     @Column(name="CUIT")
     private String cuit;
 
+    @Value("${maximo.descubierto}")
     @Column(name="MAXIMO_DESCUBIERTO")
     @Min(value = 10000, message = "El descubierto maximo debe ser al menos 10000")
     private BigDecimal maximoDescubierto;

@@ -5,12 +5,16 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
+import isi.dan.msclientes.model.Estado;
 import isi.dan.msclientes.model.Obra;
 
 @Repository
 public interface ObraRepository extends JpaRepository<Obra, Integer> {
 
     List<Obra> findByPresupuestoGreaterThanEqual(BigDecimal price);
+    List<Obra> findByEstado(Estado estado);
+    List<Obra> findByidCliente(Integer idCliente);
+    
+
 }
 

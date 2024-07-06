@@ -46,5 +46,26 @@ public class Obra {
     @Min(value=100, message = "El presupuesto debe ser al menos de 100")
     private BigDecimal presupuesto;
 
+    
+    public void asignarCliente(Cliente clienteA) {
+        if (this.estado == estado.HABILITADA){
+            this.cliente = clienteA;
+        }
+        else{
+            throw new RuntimeException("No se puede asignar un cliente a una obra no habilitada");
+        }
+    }
+
+    public void actualizarEstado(Obra obra){
+        
+        
+        obra.estado= Estado.FINALIZADA;
+
+
+    }
+
+
+
+
 
 }
