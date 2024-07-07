@@ -58,7 +58,7 @@ public class ObraService {
     }
 
     public Optional<Obra> obtenerObrasPendientes(Integer idCliente) {
-       List<Obra> obras = obraRepository.findByidCliente(idCliente);
+       List<Obra> obras = obraRepository.findByClienteId(idCliente);
        Optional<Obra> obraPendiente = obras.stream()
                         .filter(o -> o.getEstado() == Estado.PENDIENTE)
                         .findFirst();
@@ -72,10 +72,9 @@ public class ObraService {
     }
 
     //CHECKEAR
-
     public void updateHabilitado (Integer id){
         Obra obra = obraRepository.findById(id).orElseThrow(() -> new RuntimeException("Obra no encontrada"));
-        if (obra.getCliente().getMaximaCantidadObras() >= obraRepository.findByidCliente(obra.getCliente().getId()).size()){
+        if (obra.getCliente().getMaximaCantidadObras() >= obraRepository.findByClienteId(obra.getCliente().getId()).size()){
             throw new RuntimeException("No se puede asignar mas obras a este cliente");
         }
     }

@@ -51,7 +51,7 @@ public class ClienteController {
         return ResponseEntity.ok(cliente.orElseThrow(()-> new ClienteNotFoundException("Cliente "+id+" no encontrado")));
     }
 
-    @PostMapping
+    @PostMapping()
     @LogExecutionTime
     public Cliente create(@RequestBody @Validated Cliente cliente) {
         return clienteService.save(cliente);

@@ -18,7 +18,6 @@ import lombok.Data;
 @Table(name = "MS_CLI_OBRA")
 @Data
 public class Obra {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -30,10 +29,10 @@ public class Obra {
     private Boolean esRemodelacion;
     
     @Column(name = "LATITUD")
-    private float lat;
+    private float latitud;
     
     @Column(name = "LONGITUD")   
-    private float lng;
+    private float longitud;
     
     @Column(name = "ESTADO")
     private Estado estado;
@@ -44,28 +43,6 @@ public class Obra {
     
     @NotNull(message = "El presupuesto es obligatorio")
     @Min(value=100, message = "El presupuesto debe ser al menos de 100")
+    @Column(name = "PRESUPUESTO")
     private BigDecimal presupuesto;
-
-    
-    public void asignarCliente(Cliente clienteA) {
-        if (this.estado == estado.HABILITADA){
-            this.cliente = clienteA;
-        }
-        else{
-            throw new RuntimeException("No se puede asignar un cliente a una obra no habilitada");
-        }
-    }
-
-    public void actualizarEstado(Obra obra){
-        
-        
-        obra.estado= Estado.FINALIZADA;
-
-
-    }
-
-
-
-
-
 }

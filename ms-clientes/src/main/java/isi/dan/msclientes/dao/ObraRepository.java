@@ -13,7 +13,7 @@ public interface ObraRepository extends JpaRepository<Obra, Integer> {
 
     List<Obra> findByPresupuestoGreaterThanEqual(BigDecimal price);
     List<Obra> findByEstado(Estado estado);
-    List<Obra> findByidCliente(Integer idCliente);
+    List<Obra> findByClienteId(Integer clienteId);
     
 
 }
