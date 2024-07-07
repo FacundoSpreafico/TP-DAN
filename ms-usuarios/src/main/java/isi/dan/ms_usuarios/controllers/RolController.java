@@ -1,21 +1,18 @@
 package isi.dan.ms_usuarios.controllers;
 
-
-import isi.dan.ms_usuarios.services.UserClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
+import isi.dan.ms_usuarios.services.RolService;
 @RestController
-@RequestMapping("/api/user/cliente")
+@RequestMapping("/api/roles")
 
-public class UserClienteController {
-    
-
+public class RolController {
     @Autowired
-    private UserClienteService clienteService;
-
+    private RolService rolService;
 
     
+
 
 }
+
