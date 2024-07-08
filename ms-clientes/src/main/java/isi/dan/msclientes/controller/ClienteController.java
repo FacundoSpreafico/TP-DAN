@@ -36,6 +36,10 @@ public class ClienteController {
     public List<Cliente> getAll() {
         return clienteService.findAll();
     }
+
+
+
+    
     
     @GetMapping("/echo")
     @LogExecutionTime
