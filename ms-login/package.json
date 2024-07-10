@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon --exec node app/index.js"
+    "dev": "nodemon app/index.js",
+    "start": "node app/index.js"
   },
   "keywords": [],
   "author": "",
@@ -20,6 +21,9 @@
     "package": "^1.0.1",
     "pg": "^8.12.0",
     "sequelize": "^6.37.3"
+  },
+  "imports": {
+    "#Config/*": "./app/config/*"
   },
   "devDependencies": {
     "nodemon": "^3.1.4"

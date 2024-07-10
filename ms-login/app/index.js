@@ -1,6 +1,7 @@
 import Express from 'express';
 
-import { connectDB } from './config/database.js';
+import { connectDB } from '#Config/database.js';
+import ModeloUsuario from './schema/schemaUsuario.js';
 import path from 'path';
 import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -11,7 +12,6 @@ const app = Express();
 
 app.set("port",8080)
 app.listen(app.get("port"));
-console.log("Server on port",app.get("port"));
 
 //config (hay que pasarla a otro archivo)
 app.use(Express.json());
@@ -30,6 +30,8 @@ const start = async () => {
         app.listen(process.env.PORT, () => {
             console.log(`Server running on port ${process.env.PORT}`);
         });
+        ModeloUsuario.sync({ alter: true });
+        
     } catch (error) {
         console.error('Error starting server:', error);
     }

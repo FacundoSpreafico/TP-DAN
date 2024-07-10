@@ -1,7 +1,7 @@
 import { DataTypes } from 'sequelize';
-import { sequelize } from '#Config/db.js';
+import { sequelize } from '#Config/database.js';
 
-const UserModel = sequelize.define('Usuario', {
+const ModeloUsuario = sequelize.define('Usuario', {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -47,8 +47,15 @@ const UserModel = sequelize.define('Usuario', {
     },
 });
 
-ModeloUsuario.sync({ alter: true })
-    .then(() => console.log('User table synced'))
-    .catch((error) => console.error('Error syncing User table:', error));
+const syncModel = async () => {
+    try {
+        await ModeloUsuario.sync({ alter: true });
+        console.log('User table synced');
+    } catch (error) {
+        console.error('Error syncing User table:', error);
+    }
+};
+
+// Llama a la función de sincronización
 
 export default ModeloUsuario;

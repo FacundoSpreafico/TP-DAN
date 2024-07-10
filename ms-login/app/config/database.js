@@ -1,7 +1,7 @@
 import { Sequelize } from 'sequelize';
 import { config } from 'dotenv';
 
-config()
+config();
 
 const sequelize = new Sequelize(
     process.env.PG_DATABASE,
@@ -10,8 +10,7 @@ const sequelize = new Sequelize(
     {
         host: process.env.PG_HOST,
         port: process.env.PG_PORT,
-        dialect: 'postgres',
-        logging: false,
+        dialect: 'postgres'
     }
 );
 
@@ -22,7 +21,8 @@ const connectDB = async () => {
             await sequelize.authenticate();
             console.log('Database connected');
             break; // Salir del bucle si la conexión tiene éxito
-        } catch (error) {
+        }
+        catch (error) {
             console.error('Unable to connect to the database:', error);
             retries -= 1;
             console.log(`Retries left: ${retries}`);
@@ -30,5 +30,6 @@ const connectDB = async () => {
         }
     }
 };
+
 
 export { sequelize, connectDB };
