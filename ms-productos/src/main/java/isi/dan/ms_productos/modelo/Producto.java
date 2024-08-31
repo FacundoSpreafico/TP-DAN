@@ -21,8 +21,10 @@ public class Producto {
     @Column(name ="STOCK_MINIMO")
     private int stockMinimo;
     private BigDecimal precio;
-    
-    @Enumerated(EnumType.STRING)
+    @ManyToOne
+    @JoinColumn(name = "ID_CATEGORIA")
     private Categoria categoria;
+    private Integer descuentoPromocional;
+
 
 }

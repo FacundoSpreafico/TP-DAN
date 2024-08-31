@@ -7,9 +7,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
-
-
 import isi.dan.ms_productos.aop.LogExecutionTime;
+import isi.dan.ms_productos.dto.DescuentoUpdateDTO;
+import isi.dan.ms_productos.dto.StockUpdateDTO;
 import isi.dan.ms_productos.exception.ProductoNotFoundException;
 import isi.dan.ms_productos.modelo.Producto;
 import isi.dan.ms_productos.servicio.EchoClientFeign;
@@ -39,8 +39,8 @@ public class ProductoController {
     @GetMapping("/test")
     @LogExecutionTime
     public String getEcho() {
-        String resultado = echoSvc.echo();
-        log.info("Log en test 1!!!! {}",resultado);
+        String resultado = "desde /api/productos/test";
+        //log.info("Log en test 1!!!! {}",resultado);
         return resultado;
     }
 
@@ -48,8 +48,8 @@ public class ProductoController {
     @LogExecutionTime
     public String getEcho2() {
         RestTemplate restTemplate = new RestTemplate();
-        String gatewayURL = "http://ms-gateway-svc:8080";
-        String resultado = restTemplate.getForObject(gatewayURL+"/clientes/api/clientes/echo", String.class);
+        String gatewayURL = "http://ms-gateway-svc:3080";
+        String resultado = restTemplate.getForObject(gatewayURL+"/api/clientes/echo", String.class);
         log.info("Log en test 2 {}",resultado);
         return resultado;
     }
@@ -73,5 +73,16 @@ public class ProductoController {
         return ResponseEntity.noContent().build();
     }
 
+    @PutMapping("/provision")
+    @LogExecutionTime
+    public ResponseEntity<Producto> updateProducto(@RequestBody StockUpdateDTO stockUpdateDTO) throws ProductoNotFoundException {
+        return ResponseEntity.ok(productoService.updateStock(stockUpdateDTO));
+    }
+
+    @PutMapping("/descuento")
+    @LogExecutionTime
+    public ResponseEntity<Producto> updateDescuento(@RequestBody DescuentoUpdateDTO descuento) throws ProductoNotFoundException {
+        return ResponseEntity.ok(productoService.updateDescuento(descuento)); 
+    }
 }
 

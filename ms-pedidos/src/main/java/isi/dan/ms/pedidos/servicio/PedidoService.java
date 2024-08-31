@@ -23,7 +23,6 @@ public class PedidoService {
 
     Logger log = LoggerFactory.getLogger(PedidoService.class);
 
-
     public Pedido savePedido(Pedido pedido) {
         for( DetallePedido dp : pedido.getDetalle()){
             log.info("Enviando {}", dp.getProducto().getId()+";"+dp.getCantidad());

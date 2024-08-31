@@ -34,5 +34,14 @@ public class ObraService {
     public void deleteById(Integer id) {
         obraRepository.deleteById(id);
     }
+/* 
+    public Obra addObra(Integer idObra, Integer idCliente) {
+        Obra obra = obraRepository.getReferenceById(idObra);
+        
+        //obra.setCliente(clienteRepository.getReferenceById(idCliente));
+        return obraRepository.save(obra);
+    }
+*/
+
 }
 

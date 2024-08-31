@@ -53,4 +53,11 @@ public class ObraController {
         obraService.deleteById(id);
         return ResponseEntity.noContent().build();
     }
+/* 
+    @PostMapping("/{id}/addCliente/{idCliente}")
+    @LogExecutionTime
+    public ResponseEntity<Obra> addCliente(@PathVariable Integer id, @PathVariable Integer idCliente) {
+        return ResponseEntity.ok(obraService.addObra(id, idCliente));
+    }
+*/
 }
