@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.List;
 
+
 @Document(collection = "pedidos")
 @Data
 public class Pedido {
@@ -21,7 +22,7 @@ public class Pedido {
 
     private Cliente cliente;
     private BigDecimal total;
-
+    private Estado estado;
     @Field("detalle")
     private List<DetallePedido> detalle;
 

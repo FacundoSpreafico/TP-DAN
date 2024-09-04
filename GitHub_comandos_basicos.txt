@@ -1,0 +1,19 @@
+git init
+
+git config user.name "user"
+
+git config user.email "email"
+
+git remote add origin "URL"
+
+git status
+
+git add 'ruta' (añadir archivos)
+
+git commit -m "nombre-version"  (escribir la nueva version)
+
+git push origin master  (para subir la nueva version al repo) 
+
+git pull  (para actualizar codigo)
+
+@

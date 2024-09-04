@@ -33,7 +33,7 @@ public class Cliente {
     private String cuit;
 
     @Column(name="MAXIMO_DESCUBIERTO")
-    @Min(value = 10000, message = "El descubierto maximo debe ser al menos 10000")
+    @Min(value = 10000, message = "El maximo descubierto debe ser al menos 10000")
     private BigDecimal maximoDescubierto;
     
 }

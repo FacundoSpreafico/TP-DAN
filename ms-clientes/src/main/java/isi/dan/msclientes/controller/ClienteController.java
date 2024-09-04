@@ -17,6 +17,7 @@ import isi.dan.msclientes.model.Obra;
 import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
+import java.math.BigDecimal;
 
 @RestController
 @RequestMapping("/api/clientes")
@@ -75,6 +76,12 @@ public class ClienteController {
         }
         clienteService.deleteById(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/saldo")
+    @LogExecutionTime
+    public ResponseEntity<Boolean> verificarSaldoCliente(@RequestParam Integer id,  @RequestParam("montoTotal") BigDecimal montoTotal) throws ClienteNotFoundException {
+        return ResponseEntity.ok(clienteService.getSaldo(id, montoTotal));
     }
 
 }

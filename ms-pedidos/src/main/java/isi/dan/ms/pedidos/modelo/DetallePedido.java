@@ -15,5 +15,7 @@ public class DetallePedido {
     private BigDecimal descuento;
     private BigDecimal precioFinal;
 
+    
+
 
 }
