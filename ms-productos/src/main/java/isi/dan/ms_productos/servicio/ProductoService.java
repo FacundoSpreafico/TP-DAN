@@ -2,7 +2,6 @@ package isi.dan.ms_productos.servicio;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,9 +10,11 @@ import isi.dan.ms_productos.dao.ProductoRepository;
 import isi.dan.ms_productos.dto.DescuentoUpdateDTO;
 import isi.dan.ms_productos.dto.StockUpdateDTO;
 import isi.dan.ms_productos.exception.ProductoNotFoundException;
+import isi.dan.ms_productos.exception.ProductoNotStockException;
 import isi.dan.ms_productos.modelo.Producto;
 import java.util.List;
 import org.springframework.messaging.handler.annotation.Payload;
+
 @Service
 public class ProductoService {
     @Autowired
@@ -78,14 +79,29 @@ public class ProductoService {
         return producto;
     }
 
-    public Producto updateStock (StockUpdateDTO stockUpdateDTO) throws ProductoNotFoundException {
+    public Producto updateStockPrecio (StockUpdateDTO stockUpdateDTO) throws ProductoNotFoundException {
         Producto producto = productoRepository.findById(stockUpdateDTO.getIdProducto()).orElseThrow(() -> new ProductoNotFoundException(stockUpdateDTO.getIdProducto()));
         producto.setStockActual(stockUpdateDTO.getCantidad());
+        producto.setPrecio(stockUpdateDTO.getPrecio());
         productoRepository.save(producto);
         return producto;
     }
 
+    public Boolean updateStock (StockUpdateDTO stockUpdateDTO) throws ProductoNotFoundException {
+        Producto producto = productoRepository.findById(stockUpdateDTO.getIdProducto()).orElseThrow(() -> new ProductoNotFoundException(stockUpdateDTO.getIdProducto()));
+        if (producto.getStockActual() < stockUpdateDTO.getCantidad()) {
+            return false;
+            //PEDIDO ESTADO ACEPTADO
+        }
+        else{
+            //PEDIDO ESTADO EN_PREPARACION
+            producto.setStockActual(producto.getStockActual() - stockUpdateDTO.getCantidad());
+            productoRepository.save(producto);
+            return true;
+        }
+    }
 
+    
 
 }
 

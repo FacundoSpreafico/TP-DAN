@@ -1,2 +1,3 @@
 -IMPLEMENTADO FEIGN CLIENT
 -FALTA IMPLEMENTAR "Si tiene saldo pasa al siguiente paso que es verificar y actualizar STOCK" - en ELSE
+-Creé el ProductoFeignCliente y falta hacer la api para reducir el stock de un producto

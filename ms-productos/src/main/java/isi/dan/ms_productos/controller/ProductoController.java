@@ -28,30 +28,11 @@ public class ProductoController {
     @Autowired
     EchoClientFeign echoSvc;
 
-
     @PostMapping
     @LogExecutionTime
     public ResponseEntity<Producto> createProducto(@RequestBody @Validated Producto producto) {
         Producto savedProducto = productoService.saveProducto(producto);
         return ResponseEntity.ok(savedProducto);
-    }
-
-    @GetMapping("/test")
-    @LogExecutionTime
-    public String getEcho() {
-        String resultado = "desde /api/productos/test";
-        //log.info("Log en test 1!!!! {}",resultado);
-        return resultado;
-    }
-
-    @GetMapping("/test2")
-    @LogExecutionTime
-    public String getEcho2() {
-        RestTemplate restTemplate = new RestTemplate();
-        String gatewayURL = "http://ms-gateway-svc:3080";
-        String resultado = restTemplate.getForObject(gatewayURL+"/api/clientes/echo", String.class);
-        log.info("Log en test 2 {}",resultado);
-        return resultado;
     }
 
     @GetMapping
@@ -76,13 +57,22 @@ public class ProductoController {
     @PutMapping("/provision")
     @LogExecutionTime
     public ResponseEntity<Producto> updateProducto(@RequestBody StockUpdateDTO stockUpdateDTO) throws ProductoNotFoundException {
-        return ResponseEntity.ok(productoService.updateStock(stockUpdateDTO));
+        return ResponseEntity.ok(productoService.updateStockPrecio(stockUpdateDTO));
     }
 
     @PutMapping("/descuento")
     @LogExecutionTime
     public ResponseEntity<Producto> updateDescuento(@RequestBody DescuentoUpdateDTO descuento) throws ProductoNotFoundException {
         return ResponseEntity.ok(productoService.updateDescuento(descuento)); 
+    }
+
+    @PutMapping("/{id}/stock")
+    @LogExecutionTime
+    public ResponseEntity<Boolean> updateStockProducto(@PathVariable Long id, @RequestParam Integer cantidad) throws ProductoNotFoundException {
+        StockUpdateDTO stockUpdateDTO = new StockUpdateDTO();
+        stockUpdateDTO.setIdProducto(id);
+        stockUpdateDTO.setCantidad(cantidad);
+        return ResponseEntity.ok(productoService.updateStock(stockUpdateDTO));
     }
 }
 
