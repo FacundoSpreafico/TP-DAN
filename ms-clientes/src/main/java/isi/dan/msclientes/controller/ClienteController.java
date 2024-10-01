@@ -84,5 +84,10 @@ public class ClienteController {
         return ResponseEntity.ok(clienteService.getSaldo(id, montoTotal));
     }
 
-}
+    @GetMapping("/{id}/maximo-descubierto")
+    @LogExecutionTime
+    public ResponseEntity<BigDecimal> getMaximoDescubierto(@PathVariable Integer id) throws ClienteNotFoundException {
+        return ResponseEntity.ok(clienteService.getMaximoDescubierto(id));
+    }
+} 
 

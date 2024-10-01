@@ -4,6 +4,7 @@ public enum Estado {
    ACEPTADO,
    EN_PREPARACION,
    ENTREGADO,
+   RECIBIDO,
    RECHAZADO,
    CANCELADO
 

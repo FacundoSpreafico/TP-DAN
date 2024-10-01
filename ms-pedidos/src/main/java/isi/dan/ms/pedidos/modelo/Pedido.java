@@ -13,6 +13,7 @@ import java.util.List;
 @Document(collection = "pedidos")
 @Data
 public class Pedido {
+    public static final String SEQUENCE_NAME = "pedidos_sequence";
     @Id
     private String id;
     private Instant fecha;

@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
+import java.math.BigDecimal;
 import org.springframework.stereotype.Service;
 import isi.dan.ms_productos.conf.RabbitMQConfig;
 import isi.dan.ms_productos.dao.ProductoRepository;
@@ -101,6 +102,15 @@ public class ProductoService {
         }
     }
 
+    public BigDecimal getPrecio(Long id) throws ProductoNotFoundException {
+        Producto producto = productoRepository.findById(id).orElseThrow(() -> new ProductoNotFoundException(id));
+        return producto.getPrecio();
+    }
+
+    public Integer getDescuento(Long id) throws ProductoNotFoundException {
+        Producto producto = productoRepository.findById(id).orElseThrow(() -> new ProductoNotFoundException(id));
+        return producto.getDescuentoPromocional();
+    }
     
 
 }

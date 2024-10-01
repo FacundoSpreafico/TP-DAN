@@ -12,7 +12,7 @@ public class DetallePedido {
     private Producto producto;
     private Integer cantidad;
     private BigDecimal precioUnitario;
-    private BigDecimal descuento;
+    private Integer descuento;
     private BigDecimal precioFinal;
 
     

@@ -15,6 +15,7 @@ import isi.dan.ms_productos.modelo.Producto;
 import isi.dan.ms_productos.servicio.EchoClientFeign;
 import isi.dan.ms_productos.servicio.ProductoService;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
@@ -74,5 +75,20 @@ public class ProductoController {
         stockUpdateDTO.setCantidad(cantidad);
         return ResponseEntity.ok(productoService.updateStock(stockUpdateDTO));
     }
+
+
+    @GetMapping("/{id}/precio")
+    @LogExecutionTime
+    public ResponseEntity<BigDecimal> getPrecio(@PathVariable Long id) throws ProductoNotFoundException {
+        return ResponseEntity.ok(productoService.getPrecio(id));
+    }
+
+    @GetMapping("/{id}/descuento")
+    @LogExecutionTime
+    public ResponseEntity<Integer> getDescuento(@PathVariable Long id) throws ProductoNotFoundException {
+        return ResponseEntity.ok(productoService.getDescuento(id));
+    }
+
+
 }
 

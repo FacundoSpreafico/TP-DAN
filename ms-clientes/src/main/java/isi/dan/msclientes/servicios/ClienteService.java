@@ -49,4 +49,14 @@ public class ClienteService {
             throw new ClienteNotFoundException("Cliente "+id+" no encontrado");
         }
     }
+    
+    public BigDecimal getMaximoDescubierto(Integer id) throws ClienteNotFoundException{
+        Optional<Cliente> cliente = this.findById(id);
+        if(cliente.isPresent()){
+            return cliente.get().getMaximoDescubierto();
+        }
+        else{
+            throw new ClienteNotFoundException("Cliente "+id+" no encontrado");
+        }
+    }
 }

@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 
 import isi.dan.ms.pedidos.modelo.Pedido;
 import isi.dan.ms.pedidos.servicio.PedidoService;
+import isi.dan.ms.pedidos.modelo.Estado;
 
 import java.util.List;
 
