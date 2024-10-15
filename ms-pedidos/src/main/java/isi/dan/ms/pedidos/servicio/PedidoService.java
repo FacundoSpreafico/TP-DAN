@@ -1,13 +1,16 @@
 package isi.dan.ms.pedidos.servicio;
 
+import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.server.ResponseStatusException;
 
 import isi.dan.ms.pedidos.conf.RabbitMQConfig;
 import isi.dan.ms.pedidos.dao.PedidoRepository;
+import isi.dan.ms.pedidos.dto.StockUpdateDTO;
 import isi.dan.ms.pedidos.modelo.DetallePedido;
 import isi.dan.ms.pedidos.modelo.Estado;
 import isi.dan.ms.pedidos.modelo.Pedido;
@@ -23,6 +26,8 @@ import java.math.BigDecimal;
 import java.time.Instant;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import org.springframework.http.HttpStatus;
+
 
 @Service
 public class PedidoService {
@@ -152,4 +157,64 @@ public class PedidoService {
         return totalConNuevoPedido.compareTo(maximoDescubierto) <= 0; 
 
     }
+
+    
+    public Pedido updateEstado(Integer id, String estadoStr) {
+    Pedido pedido = pedidoRepository.findByNumeroPedido(id);
+
+    if (pedido != null) {
+        try {
+
+            if (!isValidEstado(estadoStr)) {
+                log.error("El estado '{}' no es válido", estadoStr);
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Estado no válido");
+            }
+
+            // Convierte el String que llega desde la API al tipo Enum Estado
+            Estado estado = Estado.valueOf(estadoStr);
+            if (pedido.getEstado() == Estado.CANCELADO || pedido.getEstado() == Estado.ENTREGADO) {
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "No se puede modificar un pedido CANCELADO o ENTREGADO");
+            }
+            
+            switch (estado) {
+                case CANCELADO:
+                    // Devuelve el stock de los productos asociados al pedido cancelado a través de RabbitMQ
+                    for (DetallePedido dp : pedido.getDetalle()) {
+                        String message = dp.getProducto().getId() + ";" + dp.getCantidad();
+                        rabbitTemplate.convertAndSend(RabbitMQConfig.DEVOLVER_STOCK_QUEUE, message);
+                    }
+                    // Actualiza el estado del pedido
+                    pedido.setEstado(estado);
+                    break;
+
+                // Otros casos de manejo de estado si es necesario
+                default:
+                    // Actualiza el estado en caso de no ser CANCELADO
+                    pedido.setEstado(estado);
+                    log.info("Pedido actualizado a estado: {}", estado);
+                    break;
+            }
+
+            return pedidoRepository.save(pedido);
+        } catch (IllegalArgumentException e) {
+            log.error("El estado '{}' no es válido", estadoStr);
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Estado no válido");
+        }
+    }
+
+    return null; // Retorna null si el pedido no fue encontrado
+}
+
+// Método para validar si el estado proporcionado es válido
+   private boolean isValidEstado(String estadoStr) {
+    for (Estado estado : Estado.values()) {
+        if (estado.name().equals(estadoStr)) {
+            return true;
+        }
+    }
+    return false;
+}
+
+
+
 }

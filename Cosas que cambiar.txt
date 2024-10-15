@@ -1,4 +1,1 @@
--IMPLEMENTADO FEIGN CLIENT (Listo)
--FALTA IMPLEMENTAR "Si tiene saldo pasa al siguiente paso que es verificar y actualizar STOCK" - en ELSE (Listo)
--Creé el ProductoFeignCliente y falta hacer la api para reducir el stock de un producto sincronamente (Listo)
--Fusionar la funcion verificarSaldoCliente boolean con la de api clientes saldo
+cambiar la lógica en productos de controller a service

@@ -1,3 +1,4 @@
+
 package isi.dan.ms_productos.servicio;
 
 import org.slf4j.Logger;
@@ -88,7 +89,7 @@ public class ProductoService {
         return producto;
     }
 
-    public Boolean updateStock (StockUpdateDTO stockUpdateDTO) throws ProductoNotFoundException {
+    public Boolean updateStock(StockUpdateDTO stockUpdateDTO) throws ProductoNotFoundException {
         Producto producto = productoRepository.findById(stockUpdateDTO.getIdProducto()).orElseThrow(() -> new ProductoNotFoundException(stockUpdateDTO.getIdProducto()));
         if (producto.getStockActual() < stockUpdateDTO.getCantidad()) {
             return false;
@@ -110,6 +111,23 @@ public class ProductoService {
     public Integer getDescuento(Long id) throws ProductoNotFoundException {
         Producto producto = productoRepository.findById(id).orElseThrow(() -> new ProductoNotFoundException(id));
         return producto.getDescuentoPromocional();
+    }
+
+    @RabbitListener(queues = RabbitMQConfig.DEVOLVER_STOCK_QUEUE)
+    public void updateStockAsinc(@Payload String message) throws ProductoNotFoundException{
+        log.info("Recibido mensaje: {}", message);
+
+        String[] parts = message.split(";");
+        Long productoId = Long.parseLong(parts[0]);
+        Integer cantidad = Integer.parseInt(parts[1]);
+    
+        Producto producto = productoRepository.findById(productoId)
+            .orElseThrow(() -> new ProductoNotFoundException(productoId));
+    
+        producto.setStockActual(producto.getStockActual() + cantidad);
+        productoRepository.save(producto);
+    
+        log.info("Stock actualizado, stock actual: {}", producto.getStockActual());
     }
     
 

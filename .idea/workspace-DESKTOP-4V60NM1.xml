@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c06d94f6-4678-4e25-965c-5ac3917eabf4" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/ms-frontend/cambios.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ms-frontend/src/components/Header.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ms-frontend/src/components/Header.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ms-frontend/src/components/LeftBar.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ms-frontend/src/components/Sidebar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cosas que cambiar.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Cosas que cambiar.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ms-pedidos/src/main/java/isi/dan/ms/pedidos/conf/RabbitMQConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/ms-pedidos/src/main/java/isi/dan/ms/pedidos/conf/RabbitMQConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ms-pedidos/src/main/java/isi/dan/ms/pedidos/controller/PedidoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ms-pedidos/src/main/java/isi/dan/ms/pedidos/controller/PedidoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ms-pedidos/src/main/java/isi/dan/ms/pedidos/dao/PedidoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/ms-pedidos/src/main/java/isi/dan/ms/pedidos/dao/PedidoRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ms-pedidos/src/main/java/isi/dan/ms/pedidos/dto/StockUpdateDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/ms-pedidos/src/main/java/isi/dan/ms/pedidos/dto/StockUpdateDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ms-pedidos/src/main/java/isi/dan/ms/pedidos/feign/ClienteFeignClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/ms-pedidos/src/main/java/isi/dan/ms/pedidos/feign/ClienteFeignClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ms-pedidos/src/main/java/isi/dan/ms/pedidos/servicio/PedidoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ms-pedidos/src/main/java/isi/dan/ms/pedidos/servicio/PedidoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ms-productos/src/main/java/isi/dan/ms_productos/conf/RabbitMQConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/ms-productos/src/main/java/isi/dan/ms_productos/conf/RabbitMQConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ms-productos/src/main/java/isi/dan/ms_productos/servicio/ProductoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ms-productos/src/main/java/isi/dan/ms_productos/servicio/ProductoService.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="CSS File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2mtGss6Hn347H33quTwNZrWc7xM" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "settings.sync",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2024.2.3\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\facus\OneDrive - UTN - Santa Fe\Facultad\4°to\DAN (Electiva)\TP\tp-dan-2024\ms-frontend\src\components" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
+      <deployment type="docker-compose.yml">
+        <settings />
+      </deployment>
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23339.11" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23339.11" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c06d94f6-4678-4e25-965c-5ac3917eabf4" name="Changes" comment="" />
+      <created>1727888673633</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1727888673633</updated>
+      <workItem from="1727888675460" duration="199000" />
+      <workItem from="1728563231916" duration="74000" />
+      <workItem from="1728563327457" duration="308000" />
+      <workItem from="1728563666890" duration="295000" />
+      <workItem from="1728564289951" duration="691000" />
+      <workItem from="1728565196518" duration="984000" />
+      <workItem from="1728566208501" duration="801000" />
+      <workItem from="1728567321083" duration="888000" />
+      <workItem from="1728568234932" duration="1381000" />
+      <workItem from="1728570053047" duration="81000" />
+      <workItem from="1728570182776" duration="1438000" />
+      <workItem from="1728571651787" duration="2976000" />
+      <workItem from="1728574801165" duration="5873000" />
+      <workItem from="1728589235718" duration="398000" />
+      <workItem from="1728589859935" duration="1318000" />
+      <workItem from="1728596675178" duration="2954000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/ms-frontend/src/app/productos/layout.js</url>
+          <line>1</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

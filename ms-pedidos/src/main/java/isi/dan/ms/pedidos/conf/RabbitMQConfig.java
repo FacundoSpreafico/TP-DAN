@@ -9,9 +9,15 @@ public class RabbitMQConfig {
 
     public static final String STOCK_UPDATE_QUEUE = "stock-update-queue";
 
+    public static final String DEVOLVER_STOCK_QUEUE = "devolver-stock-queue";
+
     @Bean
     public Queue stockUpdateQueue() {
         return new Queue(STOCK_UPDATE_QUEUE, true);
+    }
+    @Bean
+    public Queue devolverStockQueue(){
+        return new Queue(DEVOLVER_STOCK_QUEUE, true);
     }
 }
 

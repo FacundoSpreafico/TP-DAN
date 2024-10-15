@@ -10,6 +10,6 @@ import java.util.List;
 public interface PedidoRepository extends MongoRepository<Pedido, String> {
 
     List<Pedido> findByClienteIdAndEstadoIn(Integer clienteId, List<Estado> estados);
-    
+    Pedido findByNumeroPedido(Integer numeroPedido);
 }
 

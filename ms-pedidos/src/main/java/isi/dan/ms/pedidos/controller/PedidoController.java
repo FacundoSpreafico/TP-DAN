@@ -38,5 +38,11 @@ public class PedidoController {
         pedidoService.deletePedido(id);
         return ResponseEntity.noContent().build();
     }
+
+    @PutMapping("/estado/{id}/{estado}")
+    public ResponseEntity<Pedido> updateEstado(@PathVariable Integer id, @PathVariable String estado) {
+        Pedido pedido = pedidoService.updateEstado(id, estado);
+        return pedido != null ? ResponseEntity.ok(pedido) : ResponseEntity.notFound().build();
+    }
 }
 
